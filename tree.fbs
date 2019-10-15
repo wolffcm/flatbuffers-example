@@ -1,0 +1,23 @@
+// A very simple expression tree
+namespace tree;
+
+union Node { BinOp, Constant }
+
+enum Op:byte { Add, Subtract, Multiply, Divide }
+
+table BinOp {
+  lhs:Node;
+  rhs:Node;
+  op:Op;
+}
+
+table Constant {
+  value:double;
+}
+
+// The root type cannot be a union, so wrap Node in a table.
+table Root {
+  expr:Node;
+}
+
+root_type Root;
